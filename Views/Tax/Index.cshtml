@@ -1,0 +1,49 @@
+﻿@model TaxCalculator.Models.IncomeTaxModel;
+
+@{
+    ViewData["Title"] = "Income Tax Calculator";
+}
+
+<div class="text-left">
+    <h1>Income Tax Calculator</h1>
+    <div class="calculator-container" style="border:1px solid #000;width:500px;min-height:250px;padding:10px;display:grid;">
+        <form asp-action="CalculateIncomeTax">
+            <div class="form-group">
+                <label for="Salary">Gross Annual Salary:</label>
+                <input type="number" class="form-control" id="Salary" name="Salary" placeholder="Enter salary (£)" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin:10px 0;float:right;">Calculate</button>
+        </form>
+        @if (Model != null && Model.GrossAnnualSalary > 0)
+        {
+        <div style="display:block;">
+            <b>Calculation:</b>
+            <div class="results" style="display:grid;grid-template-columns:2fr 1fr;width:300px;">
+                <span>Gross Annual Salary:</span>
+                <span>@Model.GrossAnnualSalary.ToString(@"£0.00")</span>
+
+                <span>Gross Monthly Salary:</span>
+                <span>@Model.GrossMonthlySalary.ToString(@"£0.00")</span>
+
+                <span>Net Annual Salary:</span>
+                <span>@Model.NetAnnualSalary.ToString(@"£0.00")</span>
+
+                <span>Net Monthly Salary:</span>
+                <span>@Model.NetMonthlySalary.ToString(@"£0.00")</span>
+
+                <span>Annual Tax Paid:</span>
+                <span>@Model.AnnualTaxPaid.ToString(@"£0.00")</span>
+
+                <span>Monthly Tax Paid</span>
+                <span>@Model.MonthlyTaxPaid.ToString(@"£0.00")</span>
+            </div>
+        </div>
+        }
+        @if (ViewBag.NoSalary != null && !String.IsNullOrEmpty(ViewBag.NoSalary))
+        {
+        <div style="display:block;">
+            @ViewBag.NoSalary
+        </div>
+        }
+    </div>
+</div>
