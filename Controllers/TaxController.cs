@@ -28,7 +28,7 @@ namespace TaxCalculator.Controllers
 				GrossAnnualSalary = salary
 			};
 
-			model = CalculateTax.Calculate(model);
+			model = _calculateTax.Calculate(model);
 			return View("Index", model);
 		}
 	}

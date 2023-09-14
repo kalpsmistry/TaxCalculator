@@ -5,7 +5,7 @@ namespace TaxCalculator.Code
 {
 	public class CalculateTax
 	{
-        public static IncomeTaxModel Calculate(IncomeTaxModel model)
+        public IncomeTaxModel Calculate(IncomeTaxModel model)
 		{
 			decimal bandBTax = 0;
 			decimal bandCTax = 0;
